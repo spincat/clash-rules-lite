@@ -2,7 +2,7 @@ name: Update Clash Configuration URLs
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 16 * * *' # Beijing Time 8:00 am
   workflow_dispatch:
 
 jobs:
