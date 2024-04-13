@@ -11,29 +11,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+      
       - name: Update Clash configuration file URLs
         run: |
-          # 由于服务器时间为UTC，方便起见可以先将系统时间调整为北京时间
-          sudo echo 'Asia/Shanghai' > /etc/timezone
+          echo 'Asia/Shanghai' | sudo tee /etc/timezone
           sudo dpkg-reconfigure -f noninteractive tzdata
           
-          # 现在获取的年、月、日将会是北京时间
           YEAR=$(date +"%Y")
           MONTH=$(date +"%m")
           DAY=$(date +"%d")
           
-          # 已经在仓库中的文件路径
           CONFIG_FILE="clashlink.yaml"
           
           # 使用 sed 更新所有 proxy-providers 的 URL，只修改日期部分，而保留文件序号不变
           sed -i "s|uploads/[0-9]\{4\}/[0-9]\{2\}/\([0-9]\)-[0-9]\{4\}[0-9]\{2\}[0-9]\{2\}.yaml|uploads/$YEAR/$MONTH/\1-$YEAR$MONTH$DAY.yaml|g" $CONFIG_FILE
           
-          # 查看更新后的配置文件确保更改正确
           cat $CONFIG_FILE
-
+      
       - name: Commit and push if it changed
         run: |
           git config --global user.email "miqic911@gmail.com"
           git config --global user.name "spincat"
-          git diff --quiet && echo "No changes to commit" || (echo "Changes to commit" && git add . && git commit -m "Update clashlink.yaml" && git push)
+          git diff
+          git diff-index --quiet HEAD && echo "No changes to commit" || (echo "Changes to commit" && git add . && git commit -m "Update clashlink.yaml" && git push)
