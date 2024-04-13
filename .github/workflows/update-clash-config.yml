@@ -12,10 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - 名称：更新 Clash 配置文件 URL
+      - name: Update Clash configuration file URLs
         run: |
           # 由于服务器时间为UTC，方便起见可以先将系统时间调整为北京时间
-          sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           
           # 现在获取的年、月、日将会是北京时间
           YEAR=$(date +"%Y")
