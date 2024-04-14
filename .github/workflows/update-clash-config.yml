@@ -17,6 +17,7 @@ jobs:
           echo 'Asia/Shanghai' | sudo tee /etc/timezone
           sudo dpkg-reconfigure -f noninteractive tzdata
           
+          export TZ="Asia/Shanghai"
           YEAR=$(date +"%Y")
           MONTH=$(date +"%m")
           DAY=$(date +"%d")
