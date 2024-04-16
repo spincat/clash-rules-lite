@@ -51,6 +51,18 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600        
 
+  🛫 我的机场 5:
+    type: http
+    url: "https://apiurl.v1.mk/sub?target=clash&url=https://www.freeclashnode.com/uploads/2024/04/0-20240416.txt&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
+    path: ./proxies/airport5.yaml
+    interval: 86400
+    filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france"
+    exclude-filter: "高倍|×10"
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 600    
+       
 # 策略组
 proxy-groups:
   # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
