@@ -51,7 +51,6 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600        
 
-
 # 策略组
 proxy-groups:
   # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
