@@ -84,7 +84,7 @@ proxy-groups:
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
   - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
-  - {name: 🌐自定义代理, type: select, proxies: [🚀 节点选择]}
+  - {name: 🇸🇬 新加坡代理, type: select, proxies: [🌽 玉豆新加坡]}
   - {name: 📶自定义直连, type: select, proxies: [DIRECT]}
 
   # ----------------国家或地区策略组---------------------
@@ -226,16 +226,16 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/spincat/clash-rules-lite@release/direct-rules.txt"
     interval: 86400
 
-  myproxy:
+  sg:
     type: http
     behavior: classical
-    path: ./rules/myproxy.list
-    url: "https://cdn.jsdelivr.net/gh/spincat/clash-rules-lite@release/proxy-rules.txt"
+    path: ./rules/sg.list
+    url: "https://cdn.jsdelivr.net/gh/spincat/clash-rules-lite@release/sg-rules.txt"
     interval: 86400
 
 # 规则
 rules:
-  - RULE-SET,myproxy,🌐自定义代理
+  - RULE-SET,sg,🇸🇬 新加坡代理
   - RULE-SET,mydirect,📶自定义直连
   - RULE-SET,ads,🛑 广告拦截
   # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `RULE-SET`
