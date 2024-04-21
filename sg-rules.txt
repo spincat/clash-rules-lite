@@ -1,5 +1,2 @@
 payload:
-  - DOMAIN-KEYWORD,github
   - DOMAIN-SUFFIX,ciciai.com
-  - DOMAIN,tv.applemusic.com
-  - IP-CIDR,23.53.32.88/32,no-resolve
