@@ -5,7 +5,7 @@ proxy-providers:
     # 机场订阅链接，使用 Clash 链接
     url: "https://www.freeclashnode.com/uploads/2024/04/0-20240421.yaml"
     path: ./proxies/airport1.yaml
-    interval: 86400
+    interval: 43200
     # 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france"
     # 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
@@ -17,9 +17,9 @@ proxy-providers:
 
   🛫 我的机场 2:
     type: http
-    url: "https://www.freeclashnode.com/uploads/2024/04/3-20240421.yaml"
+    url: "https://www.freeclashnode.com/uploads/2024/04/1-20240421.yaml"
     path: ./proxies/airport2.yaml
-    interval: 86400
+    interval: 43200
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france"
     exclude-filter: "高倍|×10"
     health-check:
@@ -31,7 +31,7 @@ proxy-providers:
     type: http
     url: "https://www.freeclashnode.com/uploads/2024/04/2-20240421.yaml"
     path: ./proxies/airport3.yaml
-    interval: 86400
+    interval: 43200
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france"
     exclude-filter: "高倍|×10"
     health-check:
@@ -41,9 +41,9 @@ proxy-providers:
       
   🛫 我的机场 4:
     type: http
-    url: "https://apiurl.v1.mk/sub?target=clash&url=https://www.freeclashnode.com/uploads/2024/04/0-20240421.txt&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
+    url: "https://apiurl.v1.mk/sub?target=clash&url=https://www.freeclashnode.com/uploads/2024/04/1-20240421.txt&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
     path: ./proxies/airport4.yaml
-    interval: 86400
+    interval: 43200
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france"
     exclude-filter: "高倍|×10"
     health-check:
@@ -53,9 +53,9 @@ proxy-providers:
 
   🛫 我的机场 5:
     type: http
-    url: "https://apiurl.v1.mk/sub?target=clash&url=https://www.freeclashnode.com/uploads/2024/04/1-20240421.txt&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
+    url: "https://apiurl.v1.mk/sub?target=clash&url=https://www.freeclashnode.com/uploads/2024/04/2-20240421.txt&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
     path: ./proxies/airport5.yaml
-    interval: 86400
+    interval: 43200
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france"
     exclude-filter: "高倍|×10"
     health-check:
@@ -66,7 +66,7 @@ proxy-providers:
 # 策略组
 proxy-groups:
   # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
-  - {name: 🚀 节点选择, type: select, proxies: [🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇰🇷 韩国节点, 🇬🇧 英国节点, 🌽 玉豆日本, 🌽 玉豆美国,🌽 玉豆新加坡]}
+  - {name: 🚀 节点选择, type: select, proxies: [🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点,  🌽 玉豆免费, 📔 分享日记,✈️ 全部节点]}
   # 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
@@ -83,10 +83,8 @@ proxy-groups:
   - {name: 🖥️ 直连软件, type: select, proxies: [🎯 全球直连]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
   - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
+  - {name: ✈️ 全部节点, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点,🇷🇺 俄罗斯节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点,🇸🇨 塞舌尔节点,🇬🇧 英国节点,🇫🇷 法国节点,🇦🇺 澳大利亚节点,🇪🇸 西班牙节点,🇦🇪 阿联酋节点,🇺🇦 乌克兰节点,🇱🇺 卢森堡节点]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
-  - {name: 🇺🇸 美国代理, type: select, proxies: [🌽 玉豆美国]}
-  - {name: 🇸🇬 新加坡代理, type: select, proxies: [🌽 玉豆新加坡]}
-  - {name: 📶自定义直连, type: select, proxies: [DIRECT]}
 
   # ----------------国家或地区策略组---------------------
   # 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
@@ -107,9 +105,8 @@ proxy-groups:
   - {name: 🇦🇪 阿联酋节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)阿联酋|ae|united arab emirates"}
   - {name: 🇺🇦 乌克兰节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)乌克兰|ua|ukraine"}
   - {name: 🇱🇺 卢森堡节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)卢森堡|lu|luxembourg"}
-  - {name: 🌽 玉豆日本, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(?=.*玉豆)(?=.*日本).*$"} 
-  - {name: 🌽 玉豆美国, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(?=.*玉豆)(?=.*美).*$"}
-  - {name: 🌽 玉豆新加坡, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(?=.*玉豆)(?=.*新).*$"}
+  - {name: 🌽 玉豆免费, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)玉豆"} 
+  - {name: 📔 分享日记, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)分享日记"}
   - {name: 🔄 中转节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "->"}
 
 
@@ -243,9 +240,9 @@ rule-providers:
 
 # 规则
 rules:
-  - RULE-SET,sg,🇸🇬 新加坡代理
-  - RULE-SET,us,🇺🇸 美国代理
-  - RULE-SET,mydirect,📶自定义直连
+  - RULE-SET,sg,🇸🇬 新加坡节点
+  - RULE-SET,us,🇺🇸 美国节点
+  - RULE-SET,mydirect,🎯 全球直连
   - RULE-SET,ads,🛑 广告拦截
   # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `RULE-SET`
   - RULE-SET,applications,🖥️ 直连软件
