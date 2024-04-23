@@ -2,66 +2,36 @@ name: Update Clash Configuration URLs
 
 on:
   schedule:
-    - cron: '0 16 * * *' # Executes at Beijing Time 00:00 (midnight) UTC+8
+    - cron: '0 16 * * *' # Executes at Beijing Time 00:00 (midnight)
   workflow_dispatch:
 
 jobs:
   update-clash-config:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Update Proxy Providers Configuration
+      
+      - name: Update Clash configuration file URLs
         run: |
           echo 'Asia/Shanghai' | sudo tee /etc/timezone
           sudo dpkg-reconfigure -f noninteractive tzdata
-          # Define path to YAML configuration file
-          CONFIG_FILE="clashlink.yaml"
-          # Delete existing proxy-providers configurations
-          sed -i '/^proxy-providers:/,/^proxy-groups:/d' $CONFIG_FILE
-          # Generate proxy-providers configuration for the last 10 days
-          echo "proxy-providers:" >> $CONFIG_FILE
-          for i in {1..5}; do
-            for day_offset in {0..9}; do
-              DATE=$(date -d "-$day_offset days" +"%Y%m%d")
-              YEAR=$(date -d "-$day_offset days" +"%Y")
-              MONTH=$(date -d "-$day_offset days" +"%m")
-              if [ $i -le 3 ]; then
-                URL="https://www.freeclashnode.com/uploads/$YEAR/$MONTH/$i-$YEAR$MONTH$DATE.yaml"
-              else
-                # Adjust index for the URL
-                IDX=$(expr $i - 3)
-                URL="https://apiurl.v1.mk/sub?target=clash&url=https://www.freeclashnode.com/uploads/$YEAR/$MONTH/$IDX-$YEAR$MONTH$DATE.txt&insert=false&config=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false&new_name=true"
-              fi
-              # Concatenate the entry number for uniqueness
-              ENTRY_NUM=$((($day_offset * 5) + $i))
-              {
-                echo "  🛫 我的机场 $ENTRY_NUM:"
-                echo "    type: http"
-                echo "    url: \"$URL\""
-                echo "    path: ./proxies/airport$ENTRY_NUM.yaml"
-                echo "    interval: 43200"
-                echo "    filter: \"(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states|塞舌尔|sc|seychelles|英国|uk|united kingdom|澳大利亚|au|australia|西班牙|es|spain|阿联酋|ae|united arab emirates|乌克兰|ua|ukraine|卢森堡|lu|luxembourg|法国|fr|france\""
-                echo "    exclude-filter: \"高倍|×10\""
-                echo "    health-check:"
-                echo "      enable: true"
-                echo "      url: https://www.gstatic.com/generate_204"
-                echo "      interval: 600"
-              } >> $CONFIG_FILE
-            done
-          done
-
-          # Preserve original content after `proxy-groups`
-          awk '/^proxy-groups:/{flag=1} flag' $CONFIG_FILE > temp.yaml
-          # Concatenate old proxy-groups and proxy-providers configuration
-          cat temp.yaml >> $CONFIG_FILE
-          rm temp.yaml
           
-          # Commit and push changes
-          git config --global user.name 'Spincat'
-          git config --global user.email 'miqic911@gmail.com'
-          git add $CONFIG_FILE
-          git commit -m 'Update proxy-providers configuration' || echo 'No changes to commit'
-          git push
+          export TZ="Asia/Shanghai"
+          YEAR=$(date +"%Y")
+          MONTH=$(date +"%m")
+          DAY=$(date +"%d")
+          
+          CONFIG_FILE="clashlink.yaml"
+          
+          # 使用 sed 更新所有 proxy-providers 的 URL，只修改日期部分，而保留文件序号不变
+          sed -i "s|uploads/[0-9]\{4\}/[0-9]\{2\}/\([0-9]\)-[0-9]\{4\}[0-9]\{2\}[0-9]\{2\}.|uploads/$YEAR/$MONTH/\1-$YEAR$MONTH$DAY.|g" $CONFIG_FILE
+          
+          cat $CONFIG_FILE
+      
+      - name: Commit and push if it changed
+        run: |
+          git config --global user.email "miqic911@gmail.com"
+          git config --global user.name "spincat"
+          git diff
+          git diff-index --quiet HEAD && echo "No changes to commit" || (echo "Changes to commit" && git add . && git commit -m "Update clashlink.yaml" && git push)
